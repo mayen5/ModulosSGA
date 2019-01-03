@@ -1,0 +1,16 @@
+<h3>Salon</h3>
+<button [routerLink]="['/salones']" class="btn btn-secondary">Regresar</button>
+<hr>
+<div class="row animated fadeIn">
+    <div class="col-md-12">
+        <form (ngSubmit)="guardar()" #forma="ngForm">
+            <div class="form-group">
+                <label for="txtDescripcion">Descripción:</label>
+                <input [(ngModel)]="salon.Descripcion" class="form-control" type="text" name="txtDescripcion" id="txtDescripcion" placeholder="Descripción" required>
+            </div>
+            <div class="form-group">
+                <button [disabled]="!forma.valid" type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

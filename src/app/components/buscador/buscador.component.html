@@ -1,0 +1,13 @@
+<h1>Buscando: <small>{{ termino }}</small></h1>
+<div class="row" *ngIf="modulos.length == 0">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            No existen resultados con el termino: {{termino}}
+        </div>
+    </div>
+</div>
+<div class="card-deck bg-light">
+    <app-card-modulo class="col-sm-4" [tipo]=1 [modulo]="elemento" *ngFor="let elemento of modulos">
+
+    </app-card-modulo>
+</div>

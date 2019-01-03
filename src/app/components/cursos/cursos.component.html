@@ -1,0 +1,4 @@
+<div class="container animated fadeIn">
+    <app-loading *ngIf="loading"></app-loading>
+    <app-tabla (tipoMetodo)="ejecutarMetodo($event)" [items]="cursos" [clase]="clase"></app-tabla>
+</div>

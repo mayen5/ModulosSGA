@@ -1,0 +1,259 @@
+<div class="container md-5 animated fadeIn">
+    <button (click)="add()" class="btn btn-primary">Agregar</button>
+    <br>
+    <br>
+    <table class="table" *ngIf="clase === 'Alumno' ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Carne</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Carrera</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items; let i = index;">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.Carne}}</td>
+                <td>{{item.Apellidos}}</td>
+                <td>{{item.Nombres}}</td>
+                <td>{{item.Carrera.Descripcion}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+                        <button (click)="update(item.AlumnoId)" class="btn btn-success">Update</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table" *ngIf="clase === 'Carrera' ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Código</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items; let i = index;">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.CarreraId}}</td>
+                <td>{{item.Descripcion}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+                        <button (click)="update(item.CarreraId)" class="btn btn-success">Update</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table" *ngIf="clase === 'Clase' ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha Inicio</th>
+                <th scope="col">Fecha Fin</th>
+                <th scope="col">Hora Inicio</th>
+                <th scope="col">Hora Fin</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items; let i = index;">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.Nombre}}</td>
+                <td>{{item.FechaInicio | date:"dd/MM/yy"}}</td>
+                <td>{{item.FechaFinal | date:"dd/MM/yy"}}</td>
+                <td>{{item.HoraInicio}}</td>
+                <td>{{item.HoraFin}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+                        <button (click)="update(item.ClaseId)" class="btn btn-success">Update</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table" *ngIf="clase === 'ClaseAlumno' ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Código Alumno</th>
+                <th scope="col">Código Clase</th>
+                <th scope="col">Fecha de Asignación</th>
+                <th scope="col">Alumno</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items; let i = index;">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.AlumnoId}}</td>
+                <td>{{item.ClaseId}}</td>
+                <td>{{item.FechaAsignacion}}</td>
+                <td>{{item.Alumno}}</td>
+
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete()" class="btn btn-danger">Delete</button>
+                        <button (click)="update()" class="btn btn-success">Update</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table" *ngIf="clase === 'Curso' ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items; let i = index;">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.Descripcion}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+                        <button (click)="update(item.CursoId)" class="btn btn-success">Update</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table" *ngIf="clase === 'GrupoAcademico' ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Grupo Académico</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items; let i = index;">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.Descripcion}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+                        <button (click)="update(item.GrupoAcademicoId)" class="btn btn-success">Update</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table" *ngIf="clase === 'Profesor' ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Fecha de Nacimiento</th>
+                <th scope="col">No. de Cursos</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items; let i = index;">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.Nombres}}</td>
+                <td>{{item.Apellidos}}</td>
+                <td>{{item.FechaNacimiento}}</td>
+                <td>{{item.NumeroCursos}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+                        <button (click)="update(item.ProfesorId)" class="btn btn-success">Update</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table" *ngIf="clase === 'ProfesorCurso' ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Profesor</th>
+                <th scope="col">Tutor</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items; let i = index;">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.CursoId}}</td>
+                <td>{{item.ProfesorId}}</td>
+                <td>{{item.Tutor}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete()" class="btn btn-danger">Delete</button>
+                        <button (click)="update()" class="btn btn-success">Update</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table" *ngIf="clase === 'Puesto' ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Puesto</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items; let i = index;">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.Descripcion}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+                        <button (click)="update(item.PuestoId)" class="btn btn-success">Update</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table" *ngIf="clase === 'Salon' ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Salón</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items; let i = index;">
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.Descripcion}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+                        <button (click)="update(item.SalonId)" class="btn btn-success">Update</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="items.length === 0" class="alert alert-info" role="alert">
+        <strong>No hay </strong> registros que mostrar
+    </div>
+</div>

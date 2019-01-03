@@ -1,0 +1,23 @@
+<div class="card">
+    <img class="card-img-top" [src]="modulo.logo" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{ modulo.titulo }}</h5>
+        <hr>
+        <div *ngIf="tipo == 1">
+            <ul *ngFor="let tema of modulo.temas; let i = index;">
+                <li *ngIf="i < 3">
+                    {{ tema.id }} {{ tema.tema }}
+                </li>
+            </ul>
+            <button (click)="buscar(modulo.id)" type="button" class="btn btn-outline-primary btn-block">Ver más...</button>
+        </div>
+        <div *ngIf="tipo == 2">
+            <ul *ngFor="let tema of modulo.temas; let i = index;">
+                <li>
+                    {{ tema.id }} {{ tema.tema }}
+                </li>
+            </ul>
+            <button (click)="regresar()" type="button" class="btn btn-outline-primary btn-block">Regresar</button>
+        </div>
+    </div>
+</div>
